@@ -51,14 +51,14 @@ export default function NavBar() {
 
               <NavLink
                 href="/add-car"
-                className="text-gray-300 hover:text-[#f3a738] transition font-medium "
+                className="text-gray-300 transition font-medium "
               >
                 Add Car
               </NavLink >
 
               <NavLink 
                 href="/my-bookings"
-                className="text-gray-300 hover:text-[#f3a738] transition font-medium"
+                className="text-gray-300  transition font-medium"
               >
                 My Bookings
               </NavLink >
@@ -71,14 +71,14 @@ export default function NavBar() {
               <Link href="/login">
                 <button className="cursore-pointer hidden md:flex items-center
                  gap-2 bg-[#f3a738] hover:bg-[#dd962e] text-black px-7 py-3 
-                 rounded-xl font-bold transition-all duration-300 shadow-[0_8px_30px_rgba(243,167,56,0.25)] cursor-pointer">
+                 rounded font-bold transition-all duration-300 shadow-[0_8px_30px_rgba(243,167,56,0.25)] cursor-pointer">
                   Login
                 </button>
               </Link>
               <Link href="/register ">
                 <button className="cursore-pointer hidden md:flex items-center 
                 gap-2 bg-[#f3a738] hover:bg-[#dd962e] text-black px-7 py-3 
-                rounded-xl font-bold transition-all duration-300 shadow-[0_8px_30px_rgba(243,167,56,0.25)] cursor-pointer">
+                rounded font-bold transition-all duration-300 shadow-[0_8px_30px_rgba(243,167,56,0.25)] cursor-pointer">
                   Sign Up
                 </button>
               </Link>

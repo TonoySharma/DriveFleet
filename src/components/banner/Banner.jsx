@@ -35,13 +35,15 @@ const Banner = () => {
         <div className="flex flex-wrap items-center justify-center gap-4 mt-10">
           
           <Link href="/explore-cars">
-            <button className="cursor-pointer bg-[#f3a738] hover:bg-[#db9127] text-black font-bold px-8 py-4 rounded-full text-sm sm:text-base transition-all duration-300 shadow-lg shadow-orange-500/20">
+            <button className="cursor-pointer bg-[#f3a738] hover:bg-[#db9127]
+             text-black font-bold px-8 py-4 rounded-full text-sm sm:text-base transition-all duration-300 shadow-lg shadow-orange-500/20">
               Book Your Car
             </button>
           </Link>
 
           <Link href="/car-list">
-            <button className="cursor-not-allowed bg-white/10 backdrop-blur-md hover:bg-white/20 border border-white/20 text-white font-semibold px-8 py-4 rounded-full text-sm sm:text-base transition-all duration-300">
+            <button className="cursor-not-allowed bg-white/10 backdrop-blur-md
+             hover:bg-white/20 border border-white/20 text-white font-semibold px-8 py-4 rounded-full text-sm sm:text-base transition-all duration-300">
               View Car List
             </button>
           </Link>
