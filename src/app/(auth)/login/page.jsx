@@ -1,6 +1,8 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { FcGoogle } from 'react-icons/fc';
 
 export default function SignUpPage() {
   return (
@@ -91,11 +93,8 @@ export default function SignUpPage() {
           className="w-full max-w-md space-y-8" >
     
           <div>
-            <span className="bg-[#F6ECE4] text-[#E25C34] text-xs font-semibold px-2.5 py-1 rounded-md tracking-wider uppercase">
-              New Account
-            </span>
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900 mt-4 mb-1">Create Account</h1>
-            <p className="text-sm text-gray-500">Join 12,000+ drivers and car enthusiasts.</p>
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 mt-4 mb-1">Login Account</h1>
+         
           </div>
 
          
@@ -128,14 +127,15 @@ export default function SignUpPage() {
             </div>
 
         
-            <motion.button 
+          <Link href={'/'}>
+               <motion.button 
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               className="w-full bg-black text-white py-3.5 rounded font-medium text-sm flex
-               items-center justify-center gap-2 shadow-lg hover:bg-zinc-900 transition-colors mt-6"
-            >
+               items-center justify-center gap-2 shadow-lg hover:bg-zinc-900 transition-colors mt-6">
               Login <span>&rarr;</span>
             </motion.button>
+          </Link>
           </form>
 
     
@@ -152,7 +152,7 @@ export default function SignUpPage() {
             className="w-full bg-white border border-gray-200 text-gray-700 py-3
              rounded font-medium text-sm flex items-center justify-center gap-2 shadow-sm hover:bg-gray-50 transition-colors">
 
-            Continue with Google
+            <p className='flex gap-2 items-center'><FcGoogle />Continue with Google</p>
           </motion.button>
 
      

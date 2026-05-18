@@ -1,6 +1,8 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { FcGoogle } from 'react-icons/fc';
 
 export default function SignUpPage() {
   return (
@@ -155,7 +157,8 @@ export default function SignUpPage() {
             </div>
 
         
-            <motion.button 
+            <Link href={'/'}>
+              <motion.button 
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               className="w-full bg-black text-white py-3.5 rounded-xl font-medium text-sm flex
@@ -163,6 +166,8 @@ export default function SignUpPage() {
             >
               Create Account <span>&rarr;</span>
             </motion.button>
+            
+            </Link>
           </form>
 
     
@@ -177,21 +182,11 @@ export default function SignUpPage() {
             whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.99 }}
             className="w-full bg-white border border-gray-200 text-gray-700 py-3
-             rounded-xl font-medium text-sm flex items-center justify-center gap-2 shadow-sm hover:bg-gray-50 transition-colors"
-          >
+             rounded-xl font-medium text-sm flex items-center justify-center gap-2 shadow-sm
+              hover:bg-gray-50 transition-colors" >
           
-            <svg className="w-4 h-4" viewBox="0 0 24 24">
-              <path fill="#EA4335" d="M12 5.04c1.67 0 3.2.58
-               4.38 1.71l3.27-3.27C17.67 1.6 14.99 1 12 1 7.35
-                1 3.37 3.67 1.39 7.56l3.78 2.93c.89-2.67 3.39-4.45 6.83-4.45z"/>
-              <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.34H12v4.42h6.46c-.28
-               1.47-1.11 2.72-2.36 3.56l3.66 2.84c2.14-1.98 3.39-4.89 3.39-8.48z"/>
-              <path fill="#FBBC05" d="M5.17 14.81c-.23-.69-.36-1.43-.36-2.19s.13-1.5.36-2.19L1.39
-               7.56C.5 9.34 0 11.31 0 13.4s.5 4.06 1.39 5.84l3.78-2.93z"/>
-              <path fill="#34A853" d="M12 23c3.24 0 5.97-1.08 7.96-2.91l-3.66-2.84c-1.01.68-2.31 1.09-4.3
-               1.09-3.44 0-5.94-1.78-6.83-4.45L1.39 16.82C3.37 20.33 7.35 23 12 23z"/>
-            </svg>
-            Continue with Google
+
+         <p className='flex gap-2 items-center'><FcGoogle />Continue with Google</p>
           </motion.button>
 
      
