@@ -9,16 +9,16 @@ const Explorcars = ({ car }) => {
             <div
 
                 className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl
-                transition-shadow duration-300 border border-gray-100 flex flex-col justify-between"
-            >
+                transition-shadow duration-300 border
+                 border-gray-100 flex flex-col justify-between">
 
-                <div className="relative h-48 w-full overflow-hidden">
+                <div className="relative h-60 w-full overflow-hidden">
                     <Image
                         src={car.image}
                         alt={car.carModel}
                         fill
-                        className="object-cover hover:scale-110 transition duration-500"
-                    />
+                        className="object-cover hover:scale-110 transition 
+                        duration-500" />
                 </div>
 
                 <div className="p-5">
@@ -40,7 +40,7 @@ const Explorcars = ({ car }) => {
 
                 {/* View Details Button */}
                 <div className="p-5 pt-0">
-                    <Link href={'/'}>
+                    <Link href={`cars/${car._id}`}>
                         <button
                             className="w-full bg-gray-900 hover:bg-gray-800 cursor-pointer
                              text-white font-medium py-3 px-4 rounded-xl

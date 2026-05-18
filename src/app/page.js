@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Banner from "../components/banner/Banner";
-import Footer from "../components/footer/Footer";
 import AvailableCars from "../components/limitedCards/AvailableCars";
 import ExtraSection from "../components/extraSection/ExtraSection";
+import TestimonialSection from "../components/extraTestimonial/TestimonialSection";
 
 export default function Home() {
   return (
@@ -11,7 +11,8 @@ export default function Home() {
       <Banner></Banner>
       <AvailableCars></AvailableCars>
        <ExtraSection></ExtraSection>
-      <Footer></Footer>
+       <TestimonialSection></TestimonialSection>
+    
     </div>
   );
 }
