@@ -1,8 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import { FaAngleRight, FaArrowRight } from "react-icons/fa";
-import { fetchFeaturedCar } from "../lib/cars/data";
 import Image from "next/image";
+import { fetchFeaturedCar } from "../../lib/cars/data";
+
 
 const AvailableCars = async () => {
   const cars = await fetchFeaturedCar();

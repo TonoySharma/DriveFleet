@@ -4,7 +4,7 @@ import Image from 'next/image';
 const fetchSinglecar = async (id)=>{
   
     const res = await fetch (`${process.env.NEXT_PUBLIC_API_URL}/cars/${id}`)
-    const data = res.json();
+    const data = await res.json();
     return data || {};
 
 }
@@ -36,8 +36,8 @@ export default async function CarDetails({params}) {
   
           <div className="relative h-[300px] sm:h-[400px] lg:h-full min-h-[350px] w-full rounded-2xl overflow-hidden bg-gray-100 shadow-md group">
             <Image
-              src={cars.image}
-              alt={cars.carModel}
+              src={image}
+              alt={carModel}
               fill
               className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
               priority
@@ -45,9 +45,9 @@ export default async function CarDetails({params}) {
             />
       
             <span className={`absolute top-4 left-4 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase shadow-sm ${
-              cars.availability ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+              availability ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
             }`}>
-              {cars.availability ? 'Available' : 'Rent Out'}
+              {availability ? 'Available' : 'Rent Out'}
             </span>
           </div>
 
@@ -56,14 +56,14 @@ export default async function CarDetails({params}) {
             <div>
         
               <p className="text-sm font-bold uppercase tracking-widest text-blue-600 mb-1">
-                {cars.brand}
+                {brand}
               </p>
               <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-950 tracking-tight">
-                {cars.carModel}
+                {carModel}
               </h1>
 
               <div className="mt-4 flex items-baseline text-gray-900">
-                <span className="text-3xl font-extrabold tracking-tight">${cars.pricePerDay}</span>
+                <span className="text-3xl font-extrabold tracking-tight">${pricePerDay}</span>
                 <span className="ml-1 text-sm font-semibold text-gray-500">/ day</span>
               </div>
 
@@ -73,11 +73,11 @@ export default async function CarDetails({params}) {
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 flex flex-col justify-center">
                   <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">Fuel Type</span>
-                  <span className="text-base font-bold text-gray-800 mt-0.5">{cars.fuelType}</span>
+                  <span className="text-base font-bold text-gray-800 mt-0.5">{fuelType}</span>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 flex flex-col justify-center">
                   <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">Seats</span>
-                  <span className="text-base font-bold text-gray-800 mt-0.5">{cars.seats} Person</span>
+                  <span className="text-base font-bold text-gray-800 mt-0.5">{seats} Person</span>
                 </div>
               </div>
 
@@ -85,7 +85,7 @@ export default async function CarDetails({params}) {
               <div className="mt-6">
                 <h3 className="text-sm font-semibold text-gray-900 mb-2">Description</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Experience the future of driving with the {cars.carModel}. Combining performance, safety, and efficiency, it’s the perfect choice for your next premium trip.
+                  Experience the future of driving with the {carModel}. Combining performance, safety, and efficiency, it’s the perfect choice for your next premium trip.
                 </p>
               </div>
             </div>
@@ -93,14 +93,14 @@ export default async function CarDetails({params}) {
             
             <div className="pt-4">
               <button
-                disabled={!cars.availability}
+                disabled={!availability}
                 className={`w-full py-4 px-6 rounded text-center text-sm font-bold shadow-lg transition-all duration-200 active:scale-[0.98] ${
-                  cars.availability
+                  availability
                     ? 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-blue-200 shadow-md'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
               >
-                {cars.availability ? 'Book This Car Now' : 'Currently Unavailable'}
+                {availability ? 'Book This Car Now' : 'Currently Unavailable'}
               </button>
             </div>
 
