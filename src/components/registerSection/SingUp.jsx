@@ -16,6 +16,7 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import { redirect } from 'next/navigation';
 
 export default function SignUpPage() {
 
@@ -27,7 +28,8 @@ export default function SignUpPage() {
 
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
-
+      // console.log( userData);
+      
     const { data, error } = await authClient.signUp.email({
       name: userData.name,
       email: userData.email,
@@ -35,6 +37,10 @@ export default function SignUpPage() {
       password: userData.password,
       callbackURL: "/",
     });
+  console.log({data, error});
+    if(data){
+      redirect("/")
+    }
 
     if (error) {
       alert(error.message);
@@ -46,13 +52,13 @@ export default function SignUpPage() {
     }
   };
 
-  // google login
-  const handleGoogleLogin = async () => {
-    await authClient.signIn.social({
-      provider: "google",
-      callbackURL: "/",
-    });
-  };
+ const handleGoogleSingIn = async ()=>{
+   await authClient.signIn.social({
+     provider: "google"
+   })
+ }
+
+
 
   return (
     <div className="min-h-screen w-full flex bg-[#FDFBF7] font-sans overflow-hidden">
@@ -175,7 +181,8 @@ export default function SignUpPage() {
               New Account
             </span>
 
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900 mt-4 mb-1">
+            <h1 className="text-3xl font-bold tracking-tight
+             text-gray-900 mt-4 mb-1">
               Create Account
             </h1>
 
@@ -265,8 +272,7 @@ export default function SignUpPage() {
                 }
 
                 return null;
-              }}
-            >
+              }}>
 
               <Label>Password</Label>
 
@@ -326,8 +332,8 @@ export default function SignUpPage() {
                 className="w-full bg-black text-white py-3 rounded font-medium 
                 text-sm flex items-center justify-center gap-2 shadow-lg 
                 hover:bg-zinc-900 transition-colors">
-                <Check />
-                Create Account
+               <p className='flex gap-2 items-center'> <Check />
+                Create Account</p>
               </Button>
 
             </motion.div>
@@ -349,15 +355,16 @@ export default function SignUpPage() {
 
           {/* Google Button */}
           <motion.button
-            onClick={handleGoogleLogin}
+          onClick={handleGoogleSingIn}
             whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.99 }}
-            className="w-full bg-white border border-gray-200 text-gray-700 py-3
+            className="w-full bg-white border border-gray-200 text-gray-700
             rounded font-medium text-sm flex items-center justify-center gap-2 
-            shadow-sm hover:bg-gray-50 transition-colors"
-          >
+            shadow-sm 
+             transition-colors hover:bg-gray-400
+              hover:text-white  py-4" >
 
-            <p className="flex gap-2 items-center">
+            <p className="flex gap-2 items-center font-extrabold">
               <FcGoogle />
               Continue with Google
             </p>
