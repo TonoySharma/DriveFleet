@@ -4,11 +4,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
-
-
 import { Checkbox, Form, InputGroup } from "@heroui/react";
 import { Check, Eye, EyeSlash } from "@gravity-ui/icons";
-
 import {
   Button,
   FieldError,
@@ -18,6 +15,9 @@ import {
 } from "@heroui/react";
 import { redirect } from 'next/navigation';
 import { authClient } from '../../../lib/auth-client';
+
+
+
 
 export default function SignUpPage() {
 
@@ -35,10 +35,9 @@ export default function SignUpPage() {
    
       email: userData.email,
       password: userData.password,
-      callbackURL: "/",
+      // callbackURL: "/",
     });
   // console.log({data, error});
-
 
     if(data){
       redirect("/")

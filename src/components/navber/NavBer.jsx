@@ -61,6 +61,10 @@ export default function NavBar() {
                hover:text-[#f3a738] transition duration-200">
                 Add Car
               </NavLink>
+              <NavLink href="/my-bookings" className="font-medium text-gray-300
+               hover:text-[#f3a738] transition duration-200">
+               My-Bookings
+              </NavLink>
             </div>
 
 
