@@ -362,7 +362,7 @@ export default function SignUpPage() {
             rounded font-medium text-sm flex items-center justify-center gap-2 
             shadow-sm 
              transition-colors hover:bg-gray-400
-              hover:text-white  py-4" >
+              hover:text-white  py-4 cursor-pointer" >
 
             <p className="flex gap-2 items-center font-extrabold">
               <FcGoogle />
