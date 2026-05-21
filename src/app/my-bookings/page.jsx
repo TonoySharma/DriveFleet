@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { auth } from "../../lib/auth";
 import { headers } from "next/headers";
+import { BookingDeleteAlet } from "../../components/delete/BookingDeleteAlert";
 
 const MyBookingsPage = async () => {
   const session = await auth.api.getSession({
@@ -35,24 +36,27 @@ const MyBookingsPage = async () => {
   const bookings = await res.json();
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px] bg-slate-50 py-16 px-4">
+    <div className="min-h-screen bg-slate-50 py-16 px-4">
       <div className="max-w-5xl mx-auto">
         
         {/* Minimalist Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-slate-200 pb-6 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between
+         mb-16 border-b border-slate-200 pb-6 gap-4">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Workspace</span>
-            <h1 className="text-4xl font-black text-slate-900 mt-3 tracking-tight">Rental Overview</h1>
+            <span className="text-xs font-bold uppercase tracking-widest text-indigo-600
+             bg-indigo-50 px-3 py-1 rounded-full">Workspace</span>
+            <h1 className="text-4xl font-black text-slate-900 mt-3 tracking-tight">Car Booking Overview</h1>
           </div>
           <p className="text-sm font-medium text-slate-500">
-            Total Active Bookings: <span className="text-slate-900 font-bold bg-white px-2.5 py-1 rounded-md border border-slate-200 shadow-sm">{bookings?.length || 0}</span>
+            Total Active Bookings: <span className="text-slate-900 font-bold bg-white px-2.5 
+            py-1 rounded-md border border-slate-200 shadow-sm">{bookings?.length || 0}</span>
           </p>
         </div>
 
-        {/* Unique Stacked List Layout */}
+       
         {!bookings || bookings.length === 0 ? (
           <div className="text-center py-24 bg-white/80 backdrop-blur-sm rounded-3xl border border-slate-200 shadow-sm">
-            <p className="text-slate-400 font-medium">Your garage is currently empty.</p>
+            <p className="text-slate-400 font-medium">Your booking car is empty.</p>
           </div>
         ) : (
           <div className="space-y-6">
@@ -84,7 +88,7 @@ const MyBookingsPage = async () => {
                 <div className="p-6 lg:p-8 flex-1 flex flex-col justify-between gap-6">
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                     <div>
-                      <span className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider">Status</span>
+                      <span className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider">Status</span>
                       <div className="mt-1.5 flex items-center gap-2">
                         <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
                         <span className="text-sm font-semibold text-slate-700 capitalize">{bookcar.availability || "Confirmed"}</span>
@@ -92,36 +96,26 @@ const MyBookingsPage = async () => {
                     </div>
 
                     <div>
-                      <span className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider">Reserved On</span>
+                      <span className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider">Reserved On</span>
                       <span className="block mt-1.5 text-sm font-semibold text-slate-700">
                         {bookcar.bookNow || "Immediate"}
                       </span>
                     </div>
 
                     <div className="col-span-2 md:col-span-1">
-                      <span className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider">Rate</span>
+                      <span className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider">Rate</span>
                       <span className="block mt-1 text-2xl font-black text-slate-900">
-                        ${bookcar.price}<span className="text-xs font-normal text-slate-400">/day</span>
+                        ${bookcar.price}<span className="text-xs font-normal text-slate-500">/day</span>
                       </span>
                     </div>
                   </div>
 
 
-                  <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                    <div className="text-xs text-slate-400 flex items-center gap-1.5">
-                      <span className="w-1 h-1 bg-slate-300 rounded-full"></span>
-                      ID: {bookcar._id?.slice(-8) || "N/A"}
-                    </div>
-                    
+                  <div className="flex justify-end pt-4 border-t border-slate-100">
+  
                     <div className="flex gap-3">
-                      <button className="bg-indigo-50 text-indigo-600 hover:bg-indigo-600
-                       hover:text-white text-xs font-bold px-5 py-2.5 rounded transition-all duration-200 cursor-pointer">
-                       <p> Cancel</p>
-                      </button>
-                      <button className="bg-red-50 text-red-600 hover:bg-red-600
-                       hover:text-white text-xs font-bold px-5 py-2.5 rounded transition-all duration-200 cursor-pointer">
-                        <p>delete</p>
-                      </button>
+                      <BookingDeleteAlet carsId={bookcar._id}></BookingDeleteAlet>
+
                     </div>
                   </div>
                 </div>

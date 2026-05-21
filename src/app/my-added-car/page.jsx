@@ -2,7 +2,7 @@ import React from 'react';
 
 const MyAddedCarPage = () => {
     return (
-        <div>
+        <div className='mt-20'>
             My Added Cars
         </div>
     );

@@ -15,6 +15,7 @@ import {
 } from "@heroui/react";
 import { redirect } from 'next/navigation';
 import { authClient } from '../../../lib/auth-client';
+import toast from 'react-hot-toast';
 
 
 
@@ -29,35 +30,35 @@ export default function SignUpPage() {
 
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
-      // console.log( userData);
-      
+    // console.log( userData);
+
     const { data, error } = await authClient.signIn.email({
-   
+
       email: userData.email,
       password: userData.password,
       // callbackURL: "/",
     });
-  // console.log({data, error});
+    // console.log({data, error});
 
-    if(data){
+    if (data) {
       redirect("/")
     }
 
     if (error) {
-      alert(error.message);
+      toast.error(error.message);
       return;
     }
 
     if (data) {
-      alert("Signup successful");
+      toast.success("Login successful");
     }
   };
 
-   const handleGoogleSingIn = async ()=>{
-     await authClient.signIn.social({
-       provider: "google"
-     })
-   }
+  const handleGoogleSingIn = async () => {
+    await authClient.signIn.social({
+      provider: "google"
+    })
+  }
 
 
 
@@ -182,9 +183,9 @@ export default function SignUpPage() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="w-full max-w-md space-y-8 mt-16 lg:mt-0" >
 
-           <div>
+          <div>
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 mt-4 mb-1">
-           Login Your Account
+              Login Your Account
             </h1>
           </div>
 
@@ -203,16 +204,14 @@ export default function SignUpPage() {
                   return "Please enter a valid email address";
                 }
                 return null;
-              }}
-            >
+              }} >
 
               <Label>Email</Label>
 
               <Input
                 placeholder="Enter Your Email"
                 className="w-full rounded border
-                 border-gray-200 bg-white shadow-sm py-4"
-              />
+                 border-gray-200 bg-white shadow-sm py-4" />
 
               <FieldError />
             </TextField>
@@ -235,19 +234,18 @@ export default function SignUpPage() {
                 }
 
                 return null;
-              }}
-            >
+              }} >
 
               <Label>Password</Label>
 
-              <InputGroup className="rounded border border-gray-200 overflow-hidden bg-white shadow-sm">
+              <InputGroup className="rounded border border-gray-200 
+              overflow-hidden bg-white shadow-sm">
 
                 <InputGroup.Input
                   className="w-full py-4"
                   type={isVisible ? "text" : "password"}
                   name="password"
-                  placeholder="Enter your password"
-                />
+                  placeholder="Enter your password"/>
 
                 <InputGroup.Suffix>
 
@@ -257,8 +255,7 @@ export default function SignUpPage() {
                     aria-label={isVisible ? "Hide password" : "Show password"}
                     size="sm"
                     variant="ghost"
-                    onPress={() => setIsVisible(!isVisible)}
-                  >
+                    onPress={() => setIsVisible(!isVisible)}>
                     {
                       isVisible
                         ? <Eye className="size-4" />
@@ -297,8 +294,8 @@ export default function SignUpPage() {
                  py-3 rounded font-medium 
                 text-sm flex items-center justify-center gap-2 shadow-lg 
                 hover:bg-zinc-900 transition-colors">
-               <p className='flex gap-2 items-center font-semibold'> <Check />
-                Login</p>
+                <p className='flex gap-2 items-center font-semibold'> <Check />
+                  Login</p>
               </Button>
 
             </motion.div>
@@ -325,9 +322,9 @@ export default function SignUpPage() {
             onClick={handleGoogleSingIn}
             whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.99 }}
-            className="w-full cursor-pointer bg-white border border-gray-200 text-gray-700
+            className="w-full cursor-pointer bg-gray-200 border border-gray-300 text-black
             rounded font-medium text-sm flex items-center justify-center gap-2 
-            shadow-sm hover:bg-gray-400 hover:text-white transition-colors py-2"
+            shadow-sm py-2"
           >
 
             <p className="flex gap-2 items-center p-2 font-extrabold">
@@ -342,7 +339,7 @@ export default function SignUpPage() {
 
             Already have an account?
 
-            <Link href={"/login"}>
+            <Link href={"/register"}>
               <p className="text-[#E25C34] font-semibold hover:underline cursor-pointer">
                 Sign in
               </p>

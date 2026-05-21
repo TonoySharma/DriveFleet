@@ -17,6 +17,7 @@ import {
   TextField,
 } from "@heroui/react";
 import { redirect } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 export default function SignUpPage() {
 
@@ -42,13 +43,13 @@ export default function SignUpPage() {
       redirect("/")
     }
 
-    if (error) {
-      alert(error.message);
+    if (!error) {
+      toast.error(error.message);
       return;
     }
 
-    if (data) {
-      alert("Signup successful");
+    if (!data) {
+      toast.success("Signup successful");
     }
   };
 
@@ -208,8 +209,8 @@ export default function SignUpPage() {
 
               <Input
                 placeholder="Enter username"
-                className="w-full rounded-xl border border-gray-200 bg-white shadow-sm"
-              />
+                className="w-full rounded border
+                 border-gray-200 bg-white shadow-sm py-4"/>
 
               <FieldError />
             </TextField>
@@ -226,30 +227,28 @@ export default function SignUpPage() {
                   return "Please enter a valid email address";
                 }
                 return null;
-              }}
-            >
+              }} >
 
               <Label>Email</Label>
 
               <Input
                 placeholder="Enter Your Email"
-                className="w-full rounded-xl border border-gray-200 bg-white shadow-sm"
-              />
+                className="w-full rounded border border-gray-200
+                 bg-white shadow-sm"/>
 
               <FieldError />
             </TextField>
 
             {/* Photo URL */}
             <TextField
-              name="image"
-            >
+              name="image">
 
               <Label>Photo URL</Label>
 
               <Input
                 placeholder="Enter photo URL"
-                className="w-full rounded-xl border border-gray-200 bg-white shadow-sm"
-              />
+                className="w-full rounded border border-gray-200
+                 bg-white shadow-sm pt-4 py-4"/>
 
               <FieldError />
             </TextField>
@@ -276,14 +275,14 @@ export default function SignUpPage() {
 
               <Label>Password</Label>
 
-              <InputGroup className="rounded-xl border border-gray-200 overflow-hidden bg-white shadow-sm">
+              <InputGroup className="rounded border border-gray-200
+               overflow-hidden bg-white shadow-sm ">
 
                 <InputGroup.Input
-                  className="w-full"
+                  className="w-full py-4"
                   type={isVisible ? "text" : "password"}
                   name="password"
-                  placeholder="Enter your password"
-                />
+                  placeholder="Enter your password"/>
 
                 <InputGroup.Suffix>
 
@@ -341,7 +340,7 @@ export default function SignUpPage() {
           </Form>
 
           {/* Divider */}
-          <div className="relative flex py-2 items-center">
+          <div className="relative flex items-center">
 
             <div className="flex-grow border-t border-gray-200"></div>
 
@@ -358,11 +357,9 @@ export default function SignUpPage() {
           onClick={handleGoogleSingIn}
             whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.99 }}
-            className="w-full bg-white border border-gray-200 text-gray-700
+            className="w-full bg-gray-200 border border-gray-300 text-black
             rounded font-medium text-sm flex items-center justify-center gap-2 
-            shadow-sm 
-             transition-colors hover:bg-gray-400
-              hover:text-white  py-4 cursor-pointer" >
+            shadow-sm   py-4 cursor-pointer" >
 
             <p className="flex gap-2 items-center font-extrabold">
               <FcGoogle />

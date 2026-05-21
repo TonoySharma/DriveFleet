@@ -23,5 +23,6 @@ if(!session || !session?.user){
 // export default function proxy(request: NextRequest) { ... }
  
 export const config = {
-  matcher: ['/my-bookings/:id', '/add-card', '/my-added-car','/cars/:id'],
+  matcher: ['/my-bookings', '/add-car', '/my-added-car','/cars/:id'],
 }
+
