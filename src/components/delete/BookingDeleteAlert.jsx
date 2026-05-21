@@ -17,10 +17,9 @@ const handleDelete = async () =>{
 
    const data = await res.json();
 
-  //  window.location.reload();
+   window.location.reload();
 
-
-   console.log(data, 'delete data successfully');
+  //  console.log(data, 'delete data successfully');
    
    
 }
