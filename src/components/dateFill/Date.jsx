@@ -22,7 +22,7 @@ const DepartureDatePicker = ({car}) => {
     return (
         <div className='w-fit '>
                <DateField onChange={setDeparturedate}>
-                <lable className='font-bold '>Departure Date</lable>
+                {/* <p> className='font-bold '>Departure Date</p> */}
                 
                   <DateField.Group className=' border border-dotted border-gray-400 rounded'>
                     <DateField.Input >

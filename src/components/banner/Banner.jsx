@@ -19,7 +19,7 @@ const Banner = () => {
   return (
 
     <Swiper 
-     Navigation
+     navigation
     pagination={true} modules={[Pagination, Navigation]} className="mySwiper">
       <SwiperSlide>
          <section
@@ -67,6 +67,7 @@ const Banner = () => {
         </div>
       </section>
       </SwiperSlide>
+
       <SwiperSlide>
          <section
         className="relative min-h-screen bg-cover bg-center flex items-center justify-center"
@@ -113,6 +114,7 @@ const Banner = () => {
         </div>
       </section>
       </SwiperSlide>
+
       <SwiperSlide>
          <section
         className="relative min-h-screen bg-cover bg-center flex items-center justify-center"

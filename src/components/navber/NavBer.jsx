@@ -75,8 +75,7 @@ export default function NavBar() {
                   <button
                     onClick={() => setProfileOpen(!profileOpen)}
                     className="flex items-center gap-5 bg-gray-900 hover:bg-gray-850 p-1.5 pr-3
-                     rounded-full px-4 border border-gray-800 transition duration-200 focus:outline-none"
-                  >
+                     rounded-full px-4 border border-gray-800 transition duration-200 focus:outline-none">
                     <Avatar size="sm" className="w-9 h-9 cursor-pointer">
                       <Avatar.Image referrerPolicy="no-referrer" alt={user?.name} src={user?.image} />
                       <Avatar.Fallback className="bg-[#f3a738] text-black font-bold">
@@ -85,8 +84,7 @@ export default function NavBar() {
                     </Avatar>
                     <FaChevronDown
                       className={`text-gray-400 text-xs transition-transform duration-300 ${profileOpen ? "rotate-180 text-[#f3a738]" : ""
-                        }`}
-                    />
+                        }`}/>
                   </button>
 
 
@@ -95,8 +93,7 @@ export default function NavBar() {
                        border-gray-800 rounded-xl shadow-2xl transition-all duration-300 origin-top-right z-50 py-2 ${profileOpen
                         ? "opacity-100 visible scale-100"
                         : "opacity-0 invisible scale-95 pointer-events-none"
-                      }`}
-                  >
+                      }`}>
 
                     <div className="px-4 py-2 border-b border-gray-800/60 mb-1">
                       <p className="text-[11px] text-gray-500 tracking-wide uppercase">Signed in as</p>
@@ -107,8 +104,7 @@ export default function NavBar() {
                       href="/add-car"
                       onClick={() => setProfileOpen(false)}
                       className="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-white/5
-                       hover:text-[#f3a738] transition duration-200"
-                    >
+                       hover:text-[#f3a738] transition duration-200">
                       <FaCar className="text-base text-gray-400" /> Add Car
                     </Link>
 
@@ -116,17 +112,15 @@ export default function NavBar() {
                       href="/my-bookings"
                       onClick={() => setProfileOpen(false)}
                       className="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:bg-white/5
-                       hover:text-[#f3a738] transition duration-200"
-                    >
+                       hover:text-[#f3a738] transition duration-200">
                       <FaCalendarCheck className="text-base text-gray-400" /> My Bookings
                     </Link>
 
                     <Link
-                      href="/my-added-cars"
+                      href="/my-added-car"
                       onClick={() => setProfileOpen(false)}
                       className="flex items-center gap-3 px-4 py-3 text-sm text-gray-300
-                       hover:bg-white/5 hover:text-[#f3a738] transition duration-200"
-                    >
+                       hover:bg-white/5 hover:text-[#f3a738] transition duration-200">
                       <FaList className="text-base text-gray-400" /> My Added Cars
                     </Link>
 
@@ -134,8 +128,7 @@ export default function NavBar() {
                       <button
                         onClick={handleSingOut}
                         className="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-400
-                         hover:bg-red-500/10 transition duration-200 text-left font-medium"
-                      >
+                         hover:bg-red-500/10 transition duration-200 text-left font-medium" >
                         <FaSignOutAlt className="text-base" /> Logout
                       </button>
                     </div>
@@ -146,7 +139,7 @@ export default function NavBar() {
                 <div className="hidden md:flex items-center gap-3">
                   <Link href="/login">
                     <button className="bg-[#f3a738] cursor-pointer hover:bg-[#dd962e]
-                     text-black px-6 py-2.5 rounded font-bold transition-all duration-300 shadow-[0_4px_20px_rgba(243,167,56,0.15)]">
+                     text-black px-6 py-2.5 rounded font-bold transition-all duration-300 ">
                       Login
                     </button>
                   </Link>
@@ -163,8 +156,7 @@ export default function NavBar() {
               <button
                 onClick={() => setMobileMenu(!mobileMenu)}
                 className="lg:hidden text-white text-2xl p-2 rounded
-                 bg-gray-900 border border-gray-800 hover:bg-gray-800 transition duration-200 cursor-pointer"
-              >
+                 bg-gray-900 border border-gray-800 hover:bg-gray-800 transition duration-200 cursor-pointer">
                 {mobileMenu ? <HiX /> : <HiOutlineMenuAlt3 />}
               </button>
             </div>
@@ -176,8 +168,7 @@ export default function NavBar() {
       <div
         className={`fixed inset-0 z-40 lg:hidden transition-all 
           duration-300 ${mobileMenu ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
-          }`}
-      >
+          }`}>
 
         <div className="absolute inset-0 bg-black/75" onClick={() => setMobileMenu(false)} />
 
@@ -200,25 +191,11 @@ export default function NavBar() {
                hover:text-[#f3a738] transition">
               Add Car
             </NavLink>
-
-            {user && (
-              <>
-                <hr className="border-gray-800 my-1" />
-                <NavLink href="/add-car" onClick={() => setMobileMenu(false)} className="text-gray-300 text-lg hover:text-[#f3a738] transition">
-                  Add Car
-                </NavLink>
-
-                <NavLink href="/my-bookings" onClick={() => setMobileMenu(false)} className="text-gray-300 text-lg hover:text-[#f3a738] transition">
-                  My Bookings
-                </NavLink>
-
-                <NavLink href="/my-added-cars" onClick={() => setMobileMenu(false)} className="text-gray-300 text-lg hover:text-[#f3a738] transition">
-                  My Added Cars
-                </NavLink>
-              </>
-            )}
+            <NavLink href="/my-bookings" onClick={() => setMobileMenu(false)}  className="font-medium text-gray-300
+               hover:text-[#f3a738] transition">
+             My Bookings
+            </NavLink>
           </div>
-
 
           <div className="mb-6">
             {user ? (
@@ -228,8 +205,7 @@ export default function NavBar() {
                   setMobileMenu(false);
                 }}
                 className="w-full bg-red-500/10 text-red-400 border
-                 border-red-500/20 py-3 rounded font-bold flex items-center justify-center gap-2 transition cursor-pointer"
-              >
+                 border-red-500/20 py-3 rounded font-bold flex items-center justify-center gap-2 transition cursor-pointer">
                 <FaSignOutAlt /> Logout
               </button>
             ) : (

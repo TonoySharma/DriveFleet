@@ -7,36 +7,59 @@ import { auth } from '../../../lib/auth';
 import { headers } from 'next/headers';
 
 
-const fetchSinglecar = async (id, token) => {
-
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cars/${id}`,{
-   headers:{
-      authorization:`Bearer ${token} `|| ""
-   }
-
-  });
-  const data = await res.json();
-  return data || {};
-
+const fetchSinglecar = async (id) => {
+  console.log(id, 'id');
+  
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cars/${id}`);
+    if (!res.ok) return {}; 
+    return await res.json();
+  } catch (error) {
+    console.error("Car fetch error:", error);
+    return {};
+  }
 }
 
 
-export default async function CarDetails({ params }) {
+export default async function CarDetailsPage({ params }) {
   const { id } = await params;
 
   const {token} = await auth.api.getToken({
 
         headers: await headers()
   });
+
 //  console.log(token);
+ const session = await auth.api.getSession({
+  headers: await headers()
+ })
+
+//  console.log(session, 'id');
  
 
+ const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/bookNow/${id}`, {
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+});
 
-  const cars = await fetchSinglecar(id, token)
+
+let bookNow = null;
+if (res.ok && res.status !== 204) {
+  const textData = await res.text();
+  bookNow = textData ? JSON.parse(textData) : null;
+}
+// console.log(bookNow, 'booking');
+
+
+  const cars = await fetchSinglecar(id)
+
+
 
   const {
     carModel,
     brand,
+    bookNowCount,
     pricePerDay,
     image,
     fuelType,
@@ -62,10 +85,10 @@ export default async function CarDetails({ params }) {
               fill
               className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
               priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+              sizes="(max-width: 1024px) 100vw, 50vw"/>
 
-            <span className={`absolute top-4 left-4 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase shadow-sm ${availability ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+            <span className={`absolute top-4 left-4 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide
+             uppercase shadow-sm ${availability ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
               }`}>
               {availability ? 'Available' : 'Rent Out'}
             </span>
@@ -103,6 +126,10 @@ export default async function CarDetails({ params }) {
                   <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">Seats</span>
                   <span className="text-base font-bold text-gray-800 mt-0.5">{seats} Person</span>
                 </div>
+                <div className="bg-gray-50 p-4 rounded-xl border border-gray-400 border-dotted flex flex-col justify-center">
+                  <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">Booked Now</span>
+                  <span className="text-base font-bold text-gray-800 mt-0.5">{bookNowCount || 0} User</span>
+                </div>
               </div>
 
 
@@ -116,7 +143,7 @@ export default async function CarDetails({ params }) {
 
 
             <div className="pt-4">
-              <Button availability={availability}></Button>
+              <Button availability={availability} cars={cars}></Button>
             </div>
 
           </div>

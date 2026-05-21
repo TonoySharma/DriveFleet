@@ -44,8 +44,7 @@ const Explorcars = ({ car }) => {
                         <button
                             className="w-full bg-gray-900 hover:bg-gray-800 cursor-pointer
                              text-white font-medium py-3 px-4 rounded-xl
-                             transition-all duration-300 shadow-sm group"
-                        >
+                             transition-all duration-300 shadow-sm group">
                             <p className="flex items-center justify-center gap-2 text-center">
                                 View Details
 
