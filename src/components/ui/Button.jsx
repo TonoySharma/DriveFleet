@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { authClient, useSession } from "../../lib/auth-client";
 import toast from "react-hot-toast";
+// import { BookingButtonDropDown } from "../BookingButtonDropDown";
 
 
 const ButtonSection = ({ availability, cars }) => {
@@ -21,7 +22,7 @@ const ButtonSection = ({ availability, cars }) => {
     // console.log(token );
 
     if (!token) {
-      toast.error("Authorization faild. car ni add")
+      toast.error("Authorization faild. car in add")
 
       return;
     }
@@ -70,7 +71,7 @@ const ButtonSection = ({ availability, cars }) => {
 
 
   return (
-
+    // <BookingButtonDropDown ></BookingButtonDropDown>
     <button
       onClick={handleBookNow}
       disabled={!availability}

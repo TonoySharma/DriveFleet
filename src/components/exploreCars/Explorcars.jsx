@@ -1,13 +1,13 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { FaAngleRight } from 'react-icons/fa';
-
+import { motion } from 'framer-motion';
 const Explorcars = ({ car }) => {
     return (
-        <div>
+        <div >
             <div
-
                 className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl
                 transition-shadow duration-300 border
                  border-gray-100 flex flex-col justify-between">
@@ -57,7 +57,7 @@ const Explorcars = ({ car }) => {
                     </Link>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
