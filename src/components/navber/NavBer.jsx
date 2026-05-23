@@ -42,8 +42,10 @@ export default function NavBar() {
 
 
             <Link href="/">
-              <div className="flex flex-col leading-none cursor-pointer transform hover:scale-105 transition duration-300">
-                <Image src={"/image.png"} alt="logo.png" width={120} height={120} priority />
+              <div className="flex-col leading-none 
+              cursor-pointer transform hover:scale-105 
+              transition duration-300 font-bold text-3xl">
+                <span>Car</span> <span>Rental</span>
               </div>
             </Link>
 

@@ -3,7 +3,7 @@ import "./globals.css";
 import NavBar from "../components/navber/NavBer";
 import Footer from "../components/footer/Footer";
 import { Toaster } from "react-hot-toast";
-import AuthProvider from "../components/AuthProvider";
+// import AuthProvider from "../components/AuthProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,9 +28,9 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <NavBar></NavBar>
-      <AuthProvider>
+      {/* <AuthProvider> */}
         <main>{children}</main>
-      </AuthProvider>
+      {/* </AuthProvider> */}
        <Footer></Footer>
         <Toaster />
         </body>

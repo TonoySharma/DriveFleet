@@ -15,7 +15,7 @@ export const addCar = async (formdata) => {
         isAvailable: newCar.isAvailable,
         userEmail: newCar.userEmail,
     }
-    // console.log(modifiedData, 'modifiedData');
+    console.log(modifiedData, 'modifiedData');
 
     const res = await fetch("http://localhost:5000/my-added-cars", {
         method: "POST",

@@ -1,5 +1,5 @@
 "use client";
-
+import { useSession } from "../../lib/auth-client"
 import { motion } from "framer-motion";
 import {
   Car,
@@ -12,17 +12,21 @@ import {
 
 import { addCar } from "../../lib/action";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+
+import toast from "react-hot-toast";
 
 export default function AddCarPage() {
   const router = useRouter();
-
+  const { data: session } = useSession();
+  const userEmail = session?.user?.email || "";
+  
+  // console.log(session);
   const handleSubmit = async (formdata) => {
-
+  
     const currentEmail = session?.user?.email;
 
     if (!currentEmail) {
-      alert("Please Login");
+      toast.error("Please Login your account");
       return;
     }
 
@@ -30,12 +34,9 @@ export default function AddCarPage() {
     const data = await addCar(formdata);
 
     if (data?.insertedId) {
-      router.push("/");
+      router.push("/my-added-car");
     }
   };
-
-  const { data: session } = useSession();
-  const userEmail = session?.user?.email || "";
 
 
   return (

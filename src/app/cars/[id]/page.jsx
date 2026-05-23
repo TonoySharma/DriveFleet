@@ -2,13 +2,13 @@
 import { DateField, Description, FieldError, Label } from '@heroui/react';
 import Image from 'next/image';
 import Date from '../../../components/dateFill/Date';
-import Button from '../../../components/ui/Button';
 import { auth } from '../../../lib/auth';
 import { headers } from 'next/headers';
+import ButtonSection from '../../../components/ui/Button';
 
 
 const fetchSinglecar = async (id) => {
-  console.log(id, 'id');
+  // console.log(id, 'id');
   
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cars/${id}`);
@@ -53,7 +53,8 @@ if (res.ok && res.status !== 204) {
 
 
   const cars = await fetchSinglecar(id)
-
+//  console.log(cars, 'cars');
+ 
 
 
   const {
@@ -143,7 +144,7 @@ if (res.ok && res.status !== 204) {
 
 
             <div className="pt-4">
-              <Button availability={availability} cars={cars}></Button>
+             <ButtonSection availability={availability} cars={cars}></ButtonSection>
             </div>
 
           </div>
