@@ -14,6 +14,9 @@ import {
   Pencil,
 } from "lucide-react";
 import toast from "react-hot-toast";
+import { EditeCarSection } from "@/components/editeCar/EditeCarSection";
+import { Button } from "@heroui/react";
+import { MyDeleteCar } from "@/components/addedDeleteCar/MyDeletecar";
 
 export default function MyAddedCarPage() {
   const { data: session } = useSession();
@@ -27,39 +30,41 @@ export default function MyAddedCarPage() {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+
+          // console.log(data);
+
           setCars(data);
         });
     }
   }, [session]);
 
   // DELETE FUNCTION
-  const handleDelete = async (id) => {
-    const confirmDelete = confirm(
-      "Are you sure you want to delete this car?"
-    );
+  // const handleDelete = async (id) => {
+  //   const confirmDelete = confirm(
+  //     "Are you sure you want to delete this car?"
+  //   );
 
-    if (!confirmDelete) return;
+  //   if (!confirmDelete) return;
 
-    try {
-      const res = await fetch(`http://localhost:5000/cars/${id}`, {
-        method: "DELETE",
-      });
+  //   try {
+  //     const res = await fetch(`http://localhost:5000/cars/${id}`, {
+  //       method: "DELETE",
+  //     });
 
-      const data = await res.json();
+  //     const data = await res.json();
 
-      if (data.deletedCount > 0) {
-        toast.success("Car Deleted Successfully");
+  //     if (data.deletedCount > 0) {
+  //       toast.success("Car Deleted Successfully");
 
-        const remainingCars = cars.filter((car) => car._id !== id);
+  //       const remainingCars = cars.filter((car) => car._id !== id);
 
-        setCars(remainingCars);
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error("Failed To Delete");
-    }
-  };
+  //       setCars(remainingCars);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     toast.error("Failed To Delete");
+  //   }
+  // };
 
   return (
     <div className="min-h-screen bg-[#f5f1ea]
@@ -145,17 +150,6 @@ export default function MyAddedCarPage() {
                   </p>
                 </div>
 
-
-                <div
-                  className={`absolute top-4 right-4 border px-3 py-1.5 rounded-full flex items-center
-                     gap-1.5 backdrop-blur-md shadow-lg font-semibold text-xs tracking-wide ${isCarAvailable
-                    ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
-                    : 'bg-rose-500/10 border-rose-500/30 text-rose-400'
-                    }`}
-                >
-                  {isCarAvailable ? <BadgeCheck size={14} /> : <XCircle size={14} />}
-                  <span>{isCarAvailable ? 'Available' : 'Rented'}</span>
-                </div>
               </div>
 
 
@@ -196,33 +190,14 @@ export default function MyAddedCarPage() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 mt-6 pt-4 border-t border-zinc-800/20">
+                <div className="flex justify-between  mt-6 pt-4
+                 border-t border-zinc-800/20 ">
                   {/* EDIT BUTTON */}
-                  <button
-                    // onClick={ handleEdit }
-                    className="flex items-center justify-center gap-2
-                 bg-zinc-800/60 border border-zinc-700/50
-                  hover:border-zinc-600 px-4 py-2.5 rounded font-semibold 
-                  text-sm text-zinc-200 transition-all active:scale-[0.98] cursor-pointer"
-                  >
-                    <Pencil size={14} className="text-zinc-400" />
-                    Edit
-                  </button>
+                    <EditeCarSection carsId={car._id}></EditeCarSection>
 
                   {/* DELETE BUTTON */}
 
-                  <button
-                    // onClick={ handleDelete}
-                    className="flex items-center justify-center gap-2
-                  bg-rose-600 border
-                  border-rose-500/20 px-4
-                   py-2.5 rounded font-semibold text-sm 
-                    hover:text-white transition-all active:scale-[0.98] 
-                    shadow shadow-rose-950/0 hover:shadow-rose-950/20 cursor-pointer"
-                  >
-                    <Trash2 size={14} />
-                    Delete
-                  </button>
+                  <MyDeleteCar carsId={car._id}></MyDeleteCar>
                 </div>
 
 
