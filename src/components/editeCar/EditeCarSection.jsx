@@ -13,10 +13,10 @@ export function EditeCarSection({carsId}) {
     const formData = new FormData(e.currentTarget);
     const cars = Object.fromEntries(formData.entries());
 
-    console.log(cars, 'cars');
+    // console.log(cars, 'cars');
 
     const res = await fetch(`http://localhost:5000/bookNow/${carsId}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -28,7 +28,7 @@ export function EditeCarSection({carsId}) {
 
     console.log(data, 'edite data');
 
- setOpen(false);
+//  setOpen(false);
   }
 
 
@@ -152,7 +152,9 @@ export function EditeCarSection({carsId}) {
                   </select>
                 
                 
-                  <Button type="submit"
+                  <Button 
+                  
+                  type="submit"
                     className=" bg-gradient-to-r mt-15 from-purple-500
                      to-indigo-600 text-white font-semibold py-3 rounded
               hover:opacity-90 transition active:scale-[0.98] lg:w-full" >

@@ -1,4 +1,5 @@
 
+import FadeUp from "@/components/FadeUp";
 import Explorcars from "../../components/exploreCars/Explorcars";
 import SearchBar from "../../components/exploreSearchBar/SearchBar";
 
@@ -21,8 +22,9 @@ const ExploreCardsPage = async ({searchParams}) => {
     // console.log(exploreCars, 'exploreCars');
 
     return (
-        <div>
+       
             <section className="w-full bg-[#f5f1ea] py-24 px-4">
+                <FadeUp>
                 <div className="container mx-auto mt-8">
 
                     {/* Top Content */}
@@ -50,6 +52,7 @@ const ExploreCardsPage = async ({searchParams}) => {
                     </div>
 
                 </div>
+                </FadeUp>
 
                 <div className="container mx-auto my-10 px-4">
                  
@@ -60,7 +63,7 @@ const ExploreCardsPage = async ({searchParams}) => {
                     </div>
                 </div>
             </section>
-        </div>
+   
     );
 };
 

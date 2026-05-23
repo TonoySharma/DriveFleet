@@ -17,6 +17,7 @@ import toast from "react-hot-toast";
 import { EditeCarSection } from "@/components/editeCar/EditeCarSection";
 import { Button } from "@heroui/react";
 import { MyDeleteCar } from "@/components/addedDeleteCar/MyDeletecar";
+import FadeUp from "@/components/FadeUp";
 
 export default function MyAddedCarPage() {
   const { data: session } = useSession();
@@ -37,34 +38,6 @@ export default function MyAddedCarPage() {
         });
     }
   }, [session]);
-
-  // DELETE FUNCTION
-  // const handleDelete = async (id) => {
-  //   const confirmDelete = confirm(
-  //     "Are you sure you want to delete this car?"
-  //   );
-
-  //   if (!confirmDelete) return;
-
-  //   try {
-  //     const res = await fetch(`http://localhost:5000/cars/${id}`, {
-  //       method: "DELETE",
-  //     });
-
-  //     const data = await res.json();
-
-  //     if (data.deletedCount > 0) {
-  //       toast.success("Car Deleted Successfully");
-
-  //       const remainingCars = cars.filter((car) => car._id !== id);
-
-  //       setCars(remainingCars);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //     toast.error("Failed To Delete");
-  //   }
-  // };
 
   return (
     <div className="min-h-screen bg-[#f5f1ea]
@@ -118,7 +91,7 @@ export default function MyAddedCarPage() {
           const isCarAvailable = car.isAvailable === true || car.isAvailable === 'Available';
 
           return (
-            <motion.div
+            <FadeUp
               key={car._id}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -202,7 +175,7 @@ export default function MyAddedCarPage() {
 
 
               </div>
-            </motion.div>
+            </FadeUp>
           );
         })}
       </div>

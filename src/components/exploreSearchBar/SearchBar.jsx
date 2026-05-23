@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
 import { FcSearch } from 'react-icons/fc';
 import { GoArrowUpLeft } from 'react-icons/go';
+import FadeUp from '../FadeUp';
 
 
 const SharchBar = () => {
@@ -29,6 +30,7 @@ const handleSearchCar = () =>{
 
 
     return (
+        <FadeUp>
         <div>
              <Link href={'/explore-cars'}>
              <h1 className='my-5 text-cyan-600 font-bold hover:underline flex gap-1 items-center'><GoArrowUpLeft />Back to Explore</h1>
@@ -57,6 +59,7 @@ const handleSearchCar = () =>{
                 </Button>
             </div>
         </div>
+        </FadeUp>
     );
 };
 

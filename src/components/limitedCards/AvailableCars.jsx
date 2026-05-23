@@ -3,6 +3,7 @@ import React from "react";
 import { FaAngleRight, FaArrowRight } from "react-icons/fa";
 import Image from "next/image";
 import { fetchFeaturedCar } from "../../lib/cars/data";
+import FadeUp from "../FadeUp";
 
 
 const AvailableCars = async () => {
@@ -11,7 +12,7 @@ const AvailableCars = async () => {
   return (
     <div className="bg-[#f5f1ea]">
       <div className="container mx-auto p-5">
-
+        <FadeUp>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 my-10">
 
           <div>
@@ -40,20 +41,20 @@ const AvailableCars = async () => {
 
               <FaArrowRight
                 className="text-gray-700 group-hover:text-white
-        transition-all duration-300 group-hover:translate-x-1"
+        transition-all duration-300 group-hover:translate-x-1 sm:justify-end flex"
               />
             </div>
           </Link>
         </div>
+        </FadeUp>
 
         {/* Cars Grid */}
-
-
+      
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-5">
           {cars?.slice(0, 6).map((car) => (
-
+              <FadeUp key={car._id}>
             <div
-              key={car._id}
+              
               className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl
       transition-shadow duration-300 border border-gray-100 flex flex-col justify-between"
             >
@@ -97,9 +98,10 @@ const AvailableCars = async () => {
                 </Link>
               </div>
             </div>
+            </FadeUp>
           ))}
         </div>
-
+         
       </div>
     </div>
   );

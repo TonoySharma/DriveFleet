@@ -10,10 +10,12 @@ import {
   FaPhone,
   FaEnvelope,
 } from "react-icons/fa6";
+import FadeUp from "../FadeUp";
 
 const Footer = () => {
   return (
     <footer className="bg-black text-white border-t border-white/10">
+      <FadeUp>
       <div className="container mx-auto px-6 md:px-12 py-16">
         
         {/* Top Footer */}
@@ -171,6 +173,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+       </FadeUp>
     </footer>
   );
 };

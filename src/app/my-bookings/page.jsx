@@ -2,6 +2,7 @@ import Image from "next/image";
 import { auth } from "../../lib/auth";
 import { headers } from "next/headers";
 import { BookingDeleteAlet } from "../../components/delete/BookingDeleteAlert";
+import FadeUp from "@/components/FadeUp";
 
 const MyBookingsPage = async () => {
   const session = await auth.api.getSession({
@@ -37,9 +38,10 @@ const MyBookingsPage = async () => {
 
   return (
     <div className="min-h-screen bg-[#f5f1ea] py-16 px-4">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto mt-10">
         
         {/* Minimalist Header */}
+        <FadeUp>
         <div className="flex flex-col md:flex-row md:items-end justify-between
          mb-16 border-b border-slate-200 pb-6 gap-4">
           <div>
@@ -52,6 +54,7 @@ const MyBookingsPage = async () => {
             py-1 rounded-md border border-slate-200 shadow-sm">{bookings?.length || 0}</span>
           </p>
         </div>
+        </FadeUp>
 
        
         {!bookings || bookings.length === 0 ? (
@@ -61,8 +64,9 @@ const MyBookingsPage = async () => {
         ) : (
           <div className="space-y-6">
             {bookings.map((bookcar) => (
+              <FadeUp    key={bookcar._id}>
               <div 
-                key={bookcar._id}
+             
                 className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-indigo-100 transition-all duration-300 overflow-hidden flex flex-col lg:flex-row items-stretch"
               >
                 {/* Left Side */}
@@ -121,6 +125,7 @@ const MyBookingsPage = async () => {
                 </div>
 
               </div>
+              </FadeUp>
             ))}
           </div>
         )}

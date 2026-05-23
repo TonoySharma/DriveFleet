@@ -13,6 +13,8 @@ import 'swiper/css/navigation';
 
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
+import FadeUp from "../FadeUp";
+
 
 
 const Banner = () => {
@@ -30,6 +32,7 @@ const Banner = () => {
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/40"></div>
         {/* Content */}
+        <FadeUp>
         <div className="relative z-10 text-center px-6 max-w-4xl">
 
           <p className="uppercase tracking-[0.3em] text-[#f3a738] text-sm font-semibold mb-5">
@@ -65,6 +68,7 @@ const Banner = () => {
 
           </div>
         </div>
+        </FadeUp>
       </section>
       </SwiperSlide>
 
@@ -77,6 +81,7 @@ const Banner = () => {
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/40"></div>
         {/* Content */}
+        <FadeUp>
         <div className="relative z-10 text-center px-6 max-w-4xl">
 
           <p className="uppercase tracking-[0.3em] text-[#f3a738] text-sm font-semibold mb-5">
@@ -112,6 +117,7 @@ const Banner = () => {
 
           </div>
         </div>
+        </FadeUp>
       </section>
       </SwiperSlide>
 
@@ -124,6 +130,7 @@ const Banner = () => {
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/40"></div>
         {/* Content */}
+         <FadeUp>
         <div className="relative z-10 text-center px-6 max-w-4xl">
 
           <p className="uppercase tracking-[0.3em] text-[#f3a738] text-sm font-semibold mb-5">
@@ -159,6 +166,7 @@ const Banner = () => {
 
           </div>
         </div>
+        </FadeUp>
       </section>
       </SwiperSlide>
     </Swiper>

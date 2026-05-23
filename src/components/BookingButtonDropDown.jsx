@@ -61,9 +61,12 @@ export function BookingButtonDropDown({ availability, cars }) {
 
     })
 
-    console.log(res);
+    // console.log(res);
 
     const result = await res.json();
+
+    // console.log(result);
+    
 
     if (!res.ok) {
       toast.error("Something went wrong");

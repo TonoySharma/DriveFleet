@@ -49,7 +49,7 @@ const handleDelete = async () =>{
                 Cancel
               </Button>
               <Button onClick={handleDelete} slot="close" variant="danger">
-                Delete Project
+                Delete Car
               </Button>
             </AlertDialog.Footer>
           </AlertDialog.Dialog>

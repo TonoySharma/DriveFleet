@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import FadeUp from "../FadeUp";
 
 const CounterCard = ({ target, label, suffix = "" }) => {
   const [count, setCount] = useState(0);
@@ -45,6 +46,7 @@ const CounterCard = ({ target, label, suffix = "" }) => {
 
 const ExtraSection = () => {
   return (
+    <FadeUp>
     <div className="container mx-auto my-15">
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
@@ -72,6 +74,7 @@ const ExtraSection = () => {
       </div>
 
     </div>
+    </FadeUp>
   );
 };
 
