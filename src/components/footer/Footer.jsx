@@ -121,12 +121,12 @@ const Footer = () => {
 
               <div className="flex items-center gap-4">
                 <FaPhone className="text-orange-400" size={18} />
-                <p>+880 1234-567890</p>
+                <p>+880 17*******</p>
               </div>
 
               <div className="flex items-center gap-4">
                 <FaEnvelope className="text-orange-400" size={18} />
-                <p>support@getngo.com</p>
+                <p>carrentalt58@gmail.com</p>
               </div>
             </div>
           </div>
