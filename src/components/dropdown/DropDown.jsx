@@ -21,7 +21,7 @@ export default function CarDrouDownFilter({carModel, setCarModel}) {
     const expectedCars = cars.filter((car) => car.carModel === value);
     carCategory (expectedCars)
 
-    console.log(value, 'value');
+    // console.log(value, 'value');
     
 
     setCarModel (value);

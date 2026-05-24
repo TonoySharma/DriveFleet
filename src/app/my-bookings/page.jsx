@@ -37,7 +37,7 @@ const MyBookingsPage = async () => {
     );
   }
 
-  const res = await fetch(`http://localhost:5000/bookNow/${user.id}`, {
+  const res = await fetch(`https://drive-fleet-server-self.vercel.app/bookNow/${user.id}`, {
     headers: {
       authorization: `Bearer ${token}`,
     },

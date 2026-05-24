@@ -20,7 +20,7 @@ export function EditeCarSection({ carsId, setCars, session }) {
 
     // console.log(cars, 'cars');
 
-    const res = await fetch(`http://localhost:5000/bookNow/${carsId}`, {
+    const res = await fetch(`https://drive-fleet-server-self.vercel.app/bookNow/${carsId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -31,7 +31,7 @@ export function EditeCarSection({ carsId, setCars, session }) {
 
     const data = await res.json();
     fetch(
-      `http://localhost:5000/my-added-cars?email=${session.user.email}`
+      `https://drive-fleet-server-self.vercel.app/my-added-cars?email=${session.user.email}`
     )
       .then((res) => res.json())
       .then((data) => {

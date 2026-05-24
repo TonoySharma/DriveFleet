@@ -22,7 +22,7 @@ export default function MyAddedCarPage() {
   useEffect(() => {
     if (session?.user?.email) {
       fetch(
-        `http://localhost:5000/my-added-cars?email=${session.user.email}`
+        `https://drive-fleet-server-self.vercel.app/my-added-cars?email=${session.user.email}`
       )
         .then((res) => res.json())
         .then((data) => {

@@ -17,7 +17,7 @@ export const addCar = async (formdata) => {
     }
     console.log(modifiedData, 'modifiedData');
 
-    const res = await fetch("http://localhost:5000/my-added-cars", {
+    const res = await fetch("http://https://drive-fleet-server-self.vercel.app:5000/my-added-cars", {
         method: "POST",
         headers: {
             "content-type": "application/json",

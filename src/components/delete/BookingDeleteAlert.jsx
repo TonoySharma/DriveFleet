@@ -7,7 +7,7 @@ export function BookingDeleteAlet({carsId}) {
 // console.log(carsId, 'carsId');
 
 const handleDelete = async () =>{
-   const res = await fetch (`http://localhost:5000/bookNow/${carsId}`,{
+   const res = await fetch (`https://drive-fleet-server-self.vercel.app/bookNow/${carsId}`,{
     method:"DELETE",
     headers:{
       "content-type":"application/json"
