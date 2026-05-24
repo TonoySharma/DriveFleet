@@ -179,7 +179,7 @@ export default function SignUpPage() {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 sm:p-12 lg:p-16 mt-20 lg:mt-0">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 sm:p-12 lg:p-16 mt-25 lg:mt-0">
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -188,7 +188,8 @@ export default function SignUpPage() {
           className="w-full max-w-md space-y-8 mt-16 lg:mt-0" >
 
           <div>
-            <span className="bg-[#F6ECE4] text-[#E25C34] text-xs font-semibold px-2.5 py-1 rounded-md tracking-wider uppercase">
+            <span className="bg-[#F6ECE4] text-[#E25C34] text-xs font-semibold px-2.5 py-1 
+            rounded-md tracking-wider uppercase mt-5">
               New Account
             </span>
 
