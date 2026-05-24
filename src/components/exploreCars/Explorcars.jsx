@@ -1,18 +1,20 @@
+"use client"
 
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 import FadeUp from '../FadeUp';
+import { Button } from '@heroui/react';
 
 const Explorcars = ({ car }) => {
     return (
-        <div >
+      
              <FadeUp>
             <div
-                className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl
-                transition-shadow duration-300 border
-                 border-gray-100 flex flex-col justify-between">
+                className="bg-white rounded-2xl overflow-hidden 
+                shadow-md hover:shadow-xl transition-shadow duration-300 border
+                 border-gray-100 flex flex-col justify-between ">
 
                 <div className="relative h-60 w-full overflow-hidden">
                     <Image
@@ -43,9 +45,9 @@ const Explorcars = ({ car }) => {
                 {/* View Details Button */}
                 <div className="p-5 pt-0">
                     <Link href={`cars/${car._id}`}>
-                        <button
+                        <Button
                             className="w-full bg-gray-900 hover:bg-gray-800 cursor-pointer
-                             text-white font-medium py-3 px-4 rounded-xl
+                             text-white font-medium py-3 px-4 rounded
                              transition-all duration-300 shadow-sm group">
                             <p className="flex items-center justify-center gap-2 text-center">
                                 View Details
@@ -54,13 +56,13 @@ const Explorcars = ({ car }) => {
                                     className="transition-transform duration-300 group-hover:translate-x-1"
                                 />
                             </p>
-                        </button>
+                        </Button>
 
                     </Link>
                 </div>
             </div>
             </FadeUp>
-        </div >
+       
     );
 };
 

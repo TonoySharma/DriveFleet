@@ -249,9 +249,8 @@ export default function NavBar() {
           style={{
             background: "#1a2638",
             borderRight: "1px solid rgba(255,255,255,0.08)",
-          }}
-        >
-          {/* Logo inside drawer */}
+          }}>
+          {/* Logo */}
           <div>
             <div className="flex items-center gap-1.5 mb-8 mt-2">
               <span className="text-[18px] font-medium text-white">
@@ -279,7 +278,7 @@ export default function NavBar() {
             </div>
           </div>
 
-          {/* Bottom auth area */}
+          {/* Bottom */}
           <div className="mb-4">
             {user ? (
               <>

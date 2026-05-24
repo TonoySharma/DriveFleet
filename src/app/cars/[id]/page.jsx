@@ -1,10 +1,15 @@
 
-import { DateField, Description, FieldError, Label } from '@heroui/react';
 import Image from 'next/image';
 import Date from '../../../components/dateFill/Date';
 import { auth } from '../../../lib/auth';
 import { headers } from 'next/headers';
 import ButtonSection from '../../../components/ui/Button';
+
+export const metadata = {
+  title: "Car Details | Car Rental",
+  description:
+    "View detailed specifications, features, pricing, and availability of our premium rental cars before making your choice.",
+};
 
 
 const fetchSinglecar = async (id) => {

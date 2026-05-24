@@ -6,11 +6,13 @@ import { Rocket } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { FaAngleRight } from "react-icons/fa";
 import { IoCarSportOutline } from "react-icons/io5";
 
 
 export function BookingButtonDropDown({ availability, cars }) {
   const [selected, setSelected] = useState(new Set(["apple"]));
+  const [note, setNote] = useState("");
   const {
     data: session,
     isPending, //loading state
@@ -66,7 +68,7 @@ export function BookingButtonDropDown({ availability, cars }) {
     const result = await res.json();
 
     // console.log(result);
-    
+
 
     if (!res.ok) {
       toast.error("Something went wrong");
@@ -83,10 +85,16 @@ export function BookingButtonDropDown({ availability, cars }) {
     <Modal>
       {/* Trigger Button */}
       <Button
-        variant="secondary"
-        className="w-full rounded bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-4 shadow-lg hover:shadow-xl transition-all active:scale-[0.98]"
-      >
-        Book This Car
+        className="w-full bg-gray-900 hover:bg-gray-800 cursor-pointer
+                                   text-white font-medium py-3 px-4 rounded
+                                   transition-all duration-300 shadow-sm group">
+        <p className="flex items-center justify-center gap-2 text-center">
+          View Details
+
+          <FaAngleRight
+            className="transition-transform duration-300 group-hover:translate-x-1"
+          />
+        </p>
       </Button>
 
       {/* Modal */}
@@ -115,32 +123,30 @@ export function BookingButtonDropDown({ availability, cars }) {
               </div>
 
               {/* Dropdown */}
-              <Dropdown>
-                <Button
-                  aria-label="Menu"
-                  className="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl py-3 font-medium transition"
+              <div className="space-y-2">
+                <label className="text-sm text-black">Need Driver</label>
+
+                <select
+                  name="carType"
+                  whileFocus={{ scale: 1.01 }}
+                  className="w-full bg-zinc-900 border border-gray-700
+              text-white rounded px-4 py-3 outline-none transition"
                 >
-                  Select Option
-                </Button>
-
-                <Dropdown.Popover className="w-[320px] rounded-xl shadow-xl border border-gray-100">
-                  <Dropdown.Menu
-                    selectedKeys={selected}
-                    selectionMode="single"
-                    onSelectionChange={(keys) => setSelected(new Set(keys))}
-                  >
-                    <Dropdown.Item id="yes" textValue="Yes">
-                      <Dropdown.ItemIndicator />
-                      <Label>Yes</Label>
-                    </Dropdown.Item>
-
-                    <Dropdown.Item id="no" textValue="No">
-                      <Dropdown.ItemIndicator />
-                      <Label> No</Label>
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown.Popover>
-              </Dropdown>
+                  <option value="SUV">Select Option</option>
+                  <option value="Sedan">Yes</option>
+                  <option value="Hatchback">No</option>
+                </select>
+              </div>
+              
+              <div className="space-y-1">
+                <Label>Note</Label>
+                <textarea
+                  value={note}
+                  onChange={(e) => setNote(e.target.value)}
+                  placeholder="Enter your note"
+                  className="w-full border border-dashed border-gray-300 rounded-xl px-3 py-2 h-24 bg-gray-50 resize-none"
+                />
+              </div>
             </Modal.Body>
 
             {/* Footer */}
@@ -148,9 +154,11 @@ export function BookingButtonDropDown({ availability, cars }) {
               <Button
                 onClick={handleBookNow}
                 disabled={!availability}
-                className={`w-full rounded py-3 font-semibold transition-all active:scale-[0.98]
+                className={`w-full bg-gray-900 hover:bg-gray-800 cursor-pointer
+                       text-white font-medium py-3 px-4 rounded
+                         transition-all duration-300 shadow-sm group]
               ${availability
-                    ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg hover:shadow-xl"
+                    ? " bg-gray-900 text-white shadow-lg hover:shadow-xl"
                     : "bg-gray-200 text-gray-400 cursor-not-allowed"
                   }`}
               >

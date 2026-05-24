@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import React, { useState } from 'react';
@@ -20,7 +22,7 @@ import toast from 'react-hot-toast';
 
 
 
-export default function SignUpPage() {
+export default function LoginInPage() {
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -40,9 +42,7 @@ export default function SignUpPage() {
     });
     // console.log({data, error});
 
-    if (data) {
-      redirect("/")
-    }
+  
 
     if (error) {
       toast.error(error.message);
@@ -51,6 +51,14 @@ export default function SignUpPage() {
 
     if (data) {
       toast.success("Login successful");
+    }
+
+      setTimeout(() => {
+    router.push("/");
+  }, 2500);
+
+    if (data) {
+      redirect("/")
     }
   };
 
@@ -70,8 +78,8 @@ export default function SignUpPage() {
 
       {/* LEFT SIDE */}
       <div className="hidden lg:flex w-1/2
-       bg-[#0E0E0E] text-white p-12 flex-col 
-       justify-between relative overflow-hidden">
+       bg-[#0E0E0E] text-white p-10 flex-col 
+       justify-between relative overflow-hidden mt-15">
 
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -175,13 +183,21 @@ export default function SignUpPage() {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="w-ful lg:w-1/2 flex items-center justify-center p-8 sm:p-12 lg:p-16 mt-20 lg:mt-0">
-
+      <div
+        className="
+    w-full lg:w-1/2
+    flex items-center justify-center
+    px-6 sm:px-10 lg:px-16
+    py-12
+    mt-10 lg:mt-0
+  "
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="w-full max-w-md space-y-8 mt-16 lg:mt-0" >
+          className="w-full max-w-md mx-auto space-y-8"
+        >
 
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 mt-4 mb-1">
@@ -190,7 +206,6 @@ export default function SignUpPage() {
           </div>
 
           <Form className="space-y-5" onSubmit={onSubmit}>
-
 
             {/* Email */}
             <TextField
@@ -204,14 +219,16 @@ export default function SignUpPage() {
                   return "Please enter a valid email address";
                 }
                 return null;
-              }} >
+              }}
+            >
 
               <Label>Email</Label>
 
               <Input
                 placeholder="Enter Your Email"
                 className="w-full rounded border
-                 border-gray-200 bg-white shadow-sm py-4" />
+          border-gray-200 bg-white shadow-sm py-4"
+              />
 
               <FieldError />
             </TextField>
@@ -234,18 +251,24 @@ export default function SignUpPage() {
                 }
 
                 return null;
-              }} >
+              }}
+            >
 
               <Label>Password</Label>
 
-              <InputGroup className="rounded border border-gray-200 
-              overflow-hidden bg-white shadow-sm">
+              <InputGroup
+                className="
+            rounded border border-gray-200
+            overflow-hidden bg-white shadow-sm
+          "
+              >
 
                 <InputGroup.Input
                   className="w-full py-4"
                   type={isVisible ? "text" : "password"}
                   name="password"
-                  placeholder="Enter your password"/>
+                  placeholder="Enter your password"
+                />
 
                 <InputGroup.Suffix>
 
@@ -255,7 +278,8 @@ export default function SignUpPage() {
                     aria-label={isVisible ? "Hide password" : "Show password"}
                     size="sm"
                     variant="ghost"
-                    onPress={() => setIsVisible(!isVisible)}>
+                    onPress={() => setIsVisible(!isVisible)}
+                  >
                     {
                       isVisible
                         ? <Eye className="size-4" />
@@ -286,16 +310,22 @@ export default function SignUpPage() {
             {/* Submit Button */}
             <motion.div
               whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}>
+              whileTap={{ scale: 0.99 }}
+            >
 
               <Button
                 type="submit"
-                className="w-full bg-black text-white
-                 py-3 rounded font-medium 
-                text-sm flex items-center justify-center gap-2 shadow-lg 
-                hover:bg-zinc-900 transition-colors">
-                <p className='flex gap-2 items-center font-semibold'> <Check />
-                  Login</p>
+                className="
+            w-full bg-gray-800 text-white
+            py-6 min-h-[56px]
+            rounded font-medium
+            text-sm flex items-center justify-center
+            gap-2 shadow-lg
+            hover:bg-zinc-900
+            transition-colors
+            cursor-pointer">
+                <Check />
+                Login
               </Button>
 
             </motion.div>
@@ -305,11 +335,14 @@ export default function SignUpPage() {
           {/* Divider */}
           <div className="relative flex items-center">
 
-            <div className="flex-grow border-t
-             border-gray-200"></div>
+            <div className="flex-grow border-t border-gray-200"></div>
 
-            <span className="flex-shrink mx-4 text-xs
-             text-gray-400 uppercase tracking-widest">
+            <span
+              className="
+          flex-shrink mx-4 text-xs
+          text-gray-400 uppercase tracking-widest
+        "
+            >
               or
             </span>
 
@@ -322,25 +355,41 @@ export default function SignUpPage() {
             onClick={handleGoogleSingIn}
             whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.99 }}
-            className="w-full cursor-pointer bg-gray-200 border border-gray-300 text-black
-            rounded font-medium text-sm flex items-center justify-center gap-2 
-            shadow-sm py-2"
+            className="
+        w-full cursor-pointer
+        bg-gray-200 border border-gray-300
+        text-black rounded
+        font-medium text-sm
+        flex items-center justify-center gap-2
+        shadow-sm py-4
+      "
           >
 
-            <p className="flex gap-2 items-center p-2 font-extrabold">
-              <FcGoogle />
+            <FcGoogle className="text-xl" />
+
+            <span className="font-semibold">
               Continue with Google
-            </p>
+            </span>
 
           </motion.button>
 
           {/* Login Link */}
-          <h2 className="text-center text-sm text-gray-500 mt-4 flex items-center justify-center gap-1">
+          <h2
+            className="
+        text-center text-sm text-gray-500
+        mt-4 flex items-center justify-center gap-1">
 
             Already have an account?
 
             <Link href={"/register"}>
-              <p className="text-[#E25C34] font-semibold hover:underline cursor-pointer">
+              <p
+                className="
+            text-[#E25C34]
+            font-semibold
+            hover:underline
+            cursor-pointer
+          "
+              >
                 Sign in
               </p>
             </Link>

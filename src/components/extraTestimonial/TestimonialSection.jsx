@@ -62,9 +62,9 @@ const TestimonialSection = () => {
               4.9
             </h2>
 
-            <div className="flex items-center gap-3 mt-5">
+            <div className="items-center gap-3 mt-3">
 
-              <div className="flex gap-1">
+              <div className="flex gap-1 items-center justify-center">
                 {[...Array(5)].map((_, i) => (
                   <FaStar key={i} className="text-white text-lg" />
                 ))}
@@ -132,7 +132,7 @@ const TestimonialSection = () => {
 
             <div
               className="w-16 h-16 rounded-full 
-              overflow-hidden border-4 border-white"
+              overflow-hidden border-4 border-red-300"
             >
               <Image
                 src="https://i.pravatar.cc/150?img=32"

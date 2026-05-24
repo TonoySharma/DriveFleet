@@ -3,6 +3,12 @@ import FadeUp from "@/components/FadeUp";
 import Explorcars from "../../components/exploreCars/Explorcars";
 import SearchBar from "../../components/exploreSearchBar/SearchBar";
 
+export const metadata = {
+  title: "Explore Cars | Car Rental",
+  description:
+    "Browse our extensive fleet of luxury, sports, and economy cars. Find the perfect ride for your next journey and book instantly.",
+};
+
 const fatchcars = async (searchCar = '') => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cars?search=${searchCar}`);
     //    console.log(process.env.NEXT_PUBLIC_API_URL);
@@ -56,7 +62,8 @@ const ExploreCardsPage = async ({searchParams}) => {
 
                 <div className="container mx-auto my-10 px-4">
                  
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2
+                     md:grid-cols-3 lg:grid-cols-4 gap-6 ">
                         {exploreCars?.map((car) => <Explorcars car={car} key={car._id}></Explorcars>
                             
                         )}

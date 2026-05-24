@@ -184,8 +184,8 @@ export default function AddCarPage() {
               whileTap={{ scale: 0.97 }}
               className="w-full text-white py-4 rounded
               font-semibold text-lg shadow bg-blue-500
-              hover:bg-blue-600 transition flex items-center
-              justify-center gap-2"
+              hover:bg-blue-600 duration-500 flex items-center
+              justify-center gap-2 cursor-pointer"
             >
               <CheckCircle2 size={22} />
               Add Car

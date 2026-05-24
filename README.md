@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Project name - DriveFleet Car Rental Platform
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+RideEase is a premium, full-stack car rental web application built using Next.js 14, Tailwind CSS, and Node.js. It allows users to browse a verified fleet of luxury and economy vehicles, make real-time reservations, and manage their current bookings through a seamless and intuitive user dashboard.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+🔗 Live Site URL:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+✨ Key Features
 
-## Learn More
+1-Secure Authentication & Token Tracking:** Integrated with modern server-side authentication 
+auth.api.getSession and dynamic JWT token verification auth.api.getToken to keep user sessions fully secured.
 
-To learn more about Next.js, take a look at the following resources:
+2-Interactive Rental Overview Dashboard:** A beautiful, responsive workspace displaying real-time 
+booking statuses with live pulsating trackers animate-pulse and structural information grids for reserved vehicles.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3-Server-Side Rendering (SSR) & Dynamic Fetching:** Built with Next.js App Router using dynamic 
+data fetching cache: 'no-store from the backend server to ensure users always see up-to-date availability and rate lists.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4-Optimized Responsive Media Gallery:** Smooth image rendering using Next.js Image optimization 
+with aspect-ratio management and fluid hover micro-interactions group-hover:scale-105.
 
-## Deploy on Vercel
+5- Comprehensive Fleet Management:** Users can instantly check car details, dynamic daily pricing 
+models, track status pipelines, and easily cancel active reservations with one-click actions.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech Stack Used
+
+- **Frontend:** Next.js 14 (App Router), React, Tailwind CSS , Hero UI, React Icon, Tost.
+- **Backend:** Node.js, Express.js, MongoDB
+- **Authentication:** Custom Session Auth with Bearer Tokens

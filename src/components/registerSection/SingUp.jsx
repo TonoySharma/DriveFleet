@@ -19,6 +19,7 @@ import {
 import { redirect } from 'next/navigation';
 import toast from 'react-hot-toast';
 
+
 export default function SignUpPage() {
 
   const [isVisible, setIsVisible] = useState(false);
@@ -29,8 +30,8 @@ export default function SignUpPage() {
 
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
-      // console.log( userData);
-      
+    // console.log( userData);
+
     const { data, error } = await authClient.signUp.email({
       name: userData.name,
       email: userData.email,
@@ -38,26 +39,30 @@ export default function SignUpPage() {
       password: userData.password,
       callbackURL: "/",
     });
-  console.log({data, error});
-    if(data){
+    console.log({ data, error });
+    
+    if (data) {
       redirect("/")
     }
 
-    if (!error) {
+
+    if (error) {
       toast.error(error.message);
       return;
     }
 
-    if (!data) {
+    if (data) {
       toast.success("Signup successful");
     }
+
+
   };
 
- const handleGoogleSingIn = async ()=>{
-   await authClient.signIn.social({
-     provider: "google"
-   })
- }
+  const handleGoogleSingIn = async () => {
+    await authClient.signIn.social({
+      provider: "google"
+    })
+  }
 
 
 
@@ -65,7 +70,9 @@ export default function SignUpPage() {
     <div className="min-h-screen w-full flex bg-[#FDFBF7] font-sans overflow-hidden">
 
       {/* LEFT SIDE */}
-      <div className="hidden lg:flex w-1/2 bg-[#0E0E0E] text-white p-12 flex-col justify-between relative overflow-hidden">
+      <div className="hidden lg:flex w-1/2 bg-[#0E0E0E]
+       text-white p-12 flex-col justify-between relative 
+       overflow-hidden mt-15">
 
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -200,7 +207,7 @@ export default function SignUpPage() {
               name="name"
               validate={(value) => {
                 if (value.length < 3) {
-                  return "Name must be at least 3 characters";
+                  return "Name must be at least 5 characters";
                 }
                 return null;
               }}>
@@ -234,14 +241,22 @@ export default function SignUpPage() {
               <Input
                 placeholder="Enter Your Email"
                 className="w-full rounded border border-gray-200
-                 bg-white shadow-sm"/>
+                 bg-white shadow-sm py-4"/>
 
               <FieldError />
             </TextField>
 
             {/* Photo URL */}
             <TextField
-              name="image">
+              isRequired
+              name="image"
+              type="url"
+              validate={(value) => {
+                if (value.length < 3) {
+                  return "Please enter Image url";
+                }
+                return null;
+              }}>
 
               <Label>Photo URL</Label>
 
@@ -282,7 +297,7 @@ export default function SignUpPage() {
                   className="w-full py-4"
                   type={isVisible ? "text" : "password"}
                   name="password"
-                  placeholder="Enter your password"/>
+                  placeholder="Enter your password" />
 
                 <InputGroup.Suffix>
 
@@ -328,11 +343,23 @@ export default function SignUpPage() {
 
               <Button
                 type="submit"
-                className="w-full bg-black text-white py-3 rounded font-medium 
-                text-sm flex items-center justify-center gap-2 shadow-lg 
-                hover:bg-zinc-900 transition-colors">
-               <p className='flex gap-2 items-center'> <Check />
-                Create Account</p>
+                className="
+    w-full
+    bg-gray-800
+    border border-gray-300
+    text-black
+    rounded
+    font-medium
+    text-sm
+    text-white
+    flex items-center justify-center gap-2
+    shadow-sm
+    py-6
+    cursor-pointer
+  "
+              >
+                <Check />
+                Create Account
               </Button>
 
             </motion.div>
@@ -354,12 +381,12 @@ export default function SignUpPage() {
 
           {/* Google Button */}
           <motion.button
-          onClick={handleGoogleSingIn}
+            onClick={handleGoogleSingIn}
             whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.99 }}
             className="w-full bg-gray-200 border border-gray-300 text-black
             rounded font-medium text-sm flex items-center justify-center gap-2 
-            shadow-sm   py-4 cursor-pointer" >
+            shadow-sm  py-4 cursor-pointer" >
 
             <p className="flex gap-2 items-center font-extrabold">
               <FcGoogle />
