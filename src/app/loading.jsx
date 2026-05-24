@@ -1,4 +1,4 @@
-"use cient"
+"use client"
 import { Spinner } from '@heroui/react';
 import React from 'react';
 

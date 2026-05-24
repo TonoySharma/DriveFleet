@@ -94,8 +94,7 @@ export default function NavBar() {
                       border: profileOpen
                         ? "1px solid rgba(243,167,56,0.4)"
                         : "1px solid rgba(255,255,255,0.1)",
-                    }}
-                  >
+                    }}>
                     <Avatar size="sm" className="w-7 h-7">
                       <Avatar.Image
                         referrerPolicy="no-referrer"
@@ -188,27 +187,15 @@ export default function NavBar() {
                 <div className="hidden md:flex items-center gap-2">
                   <Link href="/login">
                     <button
-                      className="text-[13.5px] font-medium px-5 py-2 rounded-lg cursor-pointer transition-all duration-150 hover:brightness-90"
-                      style={{ background: "#f3a738", color: "#000" }}
-                    >
+                      className="text-[13.5px] font-medium px-5 py-2 rounded-lg cursor-pointer 
+                      transition-all duration-200 hover:brightness-90 text-white border border-orange-500 hover:bg-orange-600">
                       Login
                     </button>
                   </Link>
                   <Link href="/register">
                     <button
-                      className="text-[13.5px] px-4 py-2 rounded-lg cursor-pointer transition-all duration-150"
-                      style={{
-                        color: "rgba(255,255,255,0.65)",
-                        background: "transparent",
-                        border: "1px solid rgba(255,255,255,0.15)",
-                      }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.background = "rgba(255,255,255,0.06)")
-                      }
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.background = "transparent")
-                      }
-                    >
+                      className="text-[13.5px] px-4 py-2 rounded-lg cursor-pointer transition-all duration-200
+                       text-white border border-orange-500 hover:bg-orange-600">
                       Sign Up
                     </button>
                   </Link>
