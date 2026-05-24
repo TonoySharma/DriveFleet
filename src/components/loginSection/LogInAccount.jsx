@@ -4,11 +4,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
-import { authClient } from '../../lib/auth-client';
-
 import { Checkbox, Form, InputGroup } from "@heroui/react";
 import { Check, Eye, EyeSlash } from "@gravity-ui/icons";
-
 import {
   Button,
   FieldError,
@@ -17,10 +14,14 @@ import {
   TextField,
 } from "@heroui/react";
 import { redirect } from 'next/navigation';
+
 import toast from 'react-hot-toast';
+import { authClient } from '@/lib/auth-client';
 
 
-export default function SignUpPage() {
+
+
+export default function LoginInPage() {
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -32,22 +33,23 @@ export default function SignUpPage() {
     const userData = Object.fromEntries(formData.entries());
     // console.log( userData);
 
-    const { data, error } = await authClient.signUp.email({
-      name: userData.name,
+    const { data, error } = await authClient.signIn.email({
+
       email: userData.email,
-      image: userData.image,
       password: userData.password,
-      callbackURL: "/",
+      // callbackURL: "/",
     });
-    // console.log({ data, error });
-    
-   if (error) {
+    // console.log({data, error});
+
+  
+
+    if (error) {
       toast.error(error.message);
       return;
     }
 
     if (data) {
-      toast.success("Register successful");
+      toast.success("Login successful");
     }
 
       setTimeout(() => {
@@ -57,8 +59,6 @@ export default function SignUpPage() {
     if (data) {
       redirect("/")
     }
-
-
   };
 
   const handleGoogleSingIn = async () => {
@@ -69,13 +69,16 @@ export default function SignUpPage() {
 
 
 
+
+
   return (
-    <div className="min-h-screen w-full flex bg-[#FDFBF7] font-sans overflow-hidden">
+    <div className="min-h-screen w-full flex
+     bg-[#FDFBF7] font-sans overflow-hidden">
 
       {/* LEFT SIDE */}
-      <div className="hidden lg:flex w-1/2 bg-[#0E0E0E]
-       text-white p-12 flex-col justify-between relative 
-       overflow-hidden mt-15">
+      <div className="hidden lg:flex w-1/2
+       bg-[#0E0E0E] text-white p-10 flex-col 
+       justify-between relative overflow-hidden mt-15">
 
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -179,51 +182,29 @@ export default function SignUpPage() {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 sm:p-12 lg:p-16 mt-20 lg:mt-0">
-
+      <div
+        className="
+    w-full lg:w-1/2
+    flex items-center justify-center
+    px-6 sm:px-10 lg:px-16
+    py-12
+    mt-10 lg:mt-0
+  "
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="w-full max-w-md space-y-8 mt-16 lg:mt-0" >
+          className="w-full max-w-md mx-auto space-y-8"
+        >
 
           <div>
-            <span className="bg-[#F6ECE4] text-[#E25C34] text-xs font-semibold px-2.5 py-1 rounded-md tracking-wider uppercase">
-              New Account
-            </span>
-
-            <h1 className="text-3xl font-bold tracking-tight
-             text-gray-900 mt-4 mb-1">
-              Create Account
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 mt-4 mb-1">
+              Login Your Account
             </h1>
-
-            <p className="text-sm text-gray-500">
-              Join 10000+ drivers and car enthusiasts.
-            </p>
           </div>
 
           <Form className="space-y-5" onSubmit={onSubmit}>
-
-            {/* Full Name */}
-            <TextField
-              isRequired
-              name="name"
-              validate={(value) => {
-                if (value.length < 3) {
-                  return "Name must be at least 5 characters";
-                }
-                return null;
-              }}>
-
-              <Label>Full Name</Label>
-
-              <Input
-                placeholder="Enter username"
-                className="w-full rounded border
-                 border-gray-200 bg-white shadow-sm py-4"/>
-
-              <FieldError />
-            </TextField>
 
             {/* Email */}
             <TextField
@@ -237,36 +218,16 @@ export default function SignUpPage() {
                   return "Please enter a valid email address";
                 }
                 return null;
-              }} >
+              }}
+            >
 
               <Label>Email</Label>
 
               <Input
                 placeholder="Enter Your Email"
-                className="w-full rounded border border-gray-200
-                 bg-white shadow-sm py-4"/>
-
-              <FieldError />
-            </TextField>
-
-            {/* Photo URL */}
-            <TextField
-              isRequired
-              name="image"
-              type="url"
-              validate={(value) => {
-                if (value.length < 3) {
-                  return "Please enter Image url";
-                }
-                return null;
-              }}>
-
-              <Label>Photo URL</Label>
-
-              <Input
-                placeholder="Enter photo URL"
-                className="w-full rounded border border-gray-200
-                 bg-white shadow-sm pt-4 py-4"/>
+                className="w-full rounded border
+          border-gray-200 bg-white shadow-sm py-4"
+              />
 
               <FieldError />
             </TextField>
@@ -289,18 +250,24 @@ export default function SignUpPage() {
                 }
 
                 return null;
-              }}>
+              }}
+            >
 
               <Label>Password</Label>
 
-              <InputGroup className="rounded border border-gray-200
-               overflow-hidden bg-white shadow-sm ">
+              <InputGroup
+                className="
+            rounded border border-gray-200
+            overflow-hidden bg-white shadow-sm
+          "
+              >
 
                 <InputGroup.Input
                   className="w-full py-4"
                   type={isVisible ? "text" : "password"}
                   name="password"
-                  placeholder="Enter your password" />
+                  placeholder="Enter your password"
+                />
 
                 <InputGroup.Suffix>
 
@@ -342,27 +309,22 @@ export default function SignUpPage() {
             {/* Submit Button */}
             <motion.div
               whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}>
+              whileTap={{ scale: 0.99 }}
+            >
 
               <Button
                 type="submit"
                 className="
-    w-full
-    bg-gray-800
-    border border-gray-300
-    text-black
-    rounded
-    font-medium
-    text-sm
-    text-white
-    flex items-center justify-center gap-2
-    shadow-sm
-    py-6
-    cursor-pointer
-  "
-              >
+            w-full bg-gray-800 text-white
+            py-6 min-h-[56px]
+            rounded font-medium
+            text-sm flex items-center justify-center
+            gap-2 shadow-lg
+            hover:bg-zinc-900
+            transition-colors
+            cursor-pointer">
                 <Check />
-                Create Account
+                Login
               </Button>
 
             </motion.div>
@@ -374,7 +336,12 @@ export default function SignUpPage() {
 
             <div className="flex-grow border-t border-gray-200"></div>
 
-            <span className="flex-shrink mx-4 text-xs text-gray-400 uppercase tracking-widest">
+            <span
+              className="
+          flex-shrink mx-4 text-xs
+          text-gray-400 uppercase tracking-widest
+        "
+            >
               or
             </span>
 
@@ -387,25 +354,42 @@ export default function SignUpPage() {
             onClick={handleGoogleSingIn}
             whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.99 }}
-            className="w-full bg-gray-200 border border-gray-300 text-black
-            rounded font-medium text-sm flex items-center justify-center gap-2 
-            shadow-sm  py-4 cursor-pointer" >
+            className="
+        w-full cursor-pointer
+        bg-gray-200 border border-gray-300
+        text-black rounded
+        font-medium text-sm
+        flex items-center justify-center gap-2
+        shadow-sm py-4
+      "
+          >
 
-            <p className="flex gap-2 items-center font-extrabold">
-              <FcGoogle />
+            <FcGoogle className="text-xl" />
+
+            <span className="font-semibold">
               Continue with Google
-            </p>
+            </span>
 
           </motion.button>
 
           {/* Login Link */}
-          <h2 className="text-center text-sm text-gray-500 mt-4 flex items-center justify-center gap-1">
+          <h2
+            className="
+        text-center text-sm text-gray-500
+        mt-4 flex items-center justify-center gap-1">
 
             Already have an account?
 
-            <Link href={"/login"}>
-              <p className="text-[#E25C34] font-semibold hover:underline cursor-pointer">
-                Login
+            <Link href={"/register"}>
+              <p
+                className="
+            text-[#E25C34]
+            font-semibold
+            hover:underline
+            cursor-pointer
+          "
+              >
+                Register
               </p>
             </Link>
 

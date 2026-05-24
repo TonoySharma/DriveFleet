@@ -161,7 +161,7 @@ export default function MyAddedCarPage() {
                 <div className="flex justify-between  mt-6 pt-4
                  border-t border-zinc-800/20 ">
                   {/* EDIT BUTTON */}
-                    <EditeCarSection carsId={car._id}></EditeCarSection>
+                    <EditeCarSection carsId={car._id} setCars={setCars} session={session}></EditeCarSection>
 
                   {/* DELETE BUTTON */}
 

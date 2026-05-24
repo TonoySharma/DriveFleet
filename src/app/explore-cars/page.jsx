@@ -3,6 +3,7 @@ import FadeUp from "@/components/FadeUp";
 import Explorcars from "../../components/exploreCars/Explorcars";
 import SearchBar from "../../components/exploreSearchBar/SearchBar";
 
+
 export const metadata = {
   title: "Explore Cars | Car Rental",
   description:
@@ -11,7 +12,7 @@ export const metadata = {
 
 const fatchcars = async (searchCar = '') => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/cars?search=${searchCar}`);
-    //    console.log(process.env.NEXT_PUBLIC_API_URL);
+
     const data = res.json();
     return data || [];
 }

@@ -2,11 +2,16 @@
 
 import { Button, Modal, } from "@heroui/react";
 import { DollarSign, ImageIcon, MapPin, Pencil } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { RxUpdate } from "react-icons/rx";
 
-export function EditeCarSection({carsId}) {
+export function EditeCarSection({ carsId, setCars, session }) {
 
-  // const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
+
+
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -25,15 +30,26 @@ export function EditeCarSection({carsId}) {
     });
 
     const data = await res.json();
+    fetch(
+      `http://localhost:5000/my-added-cars?email=${session.user.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+
+        // console.log(data);
+
+        setCars(data);
+      });
 
     console.log(data, 'edite data');
+    router.refresh()
+    setOpen(false);
 
-//  setOpen(false);
   }
 
 
   return (
-    <Modal>
+    <Modal isOpen={open} onOpenChange={setOpen}>
       {/* Trigger Button */}
       <Button
         className="flex items-center justify-center gap-2
@@ -150,18 +166,18 @@ export function EditeCarSection({carsId}) {
                     <option value="available">Available</option>
                     <option value="unavailable">Unavailable</option>
                   </select>
-                
-                
-                  <Button 
-                  
-                  type="submit"
+
+
+                  <Button
+
+                    type="submit"
                     className=" bg-gradient-to-r mt-15 from-purple-500
                      to-indigo-600 text-white font-semibold py-3 rounded
               hover:opacity-90 transition active:scale-[0.98] lg:w-full" >
 
-                   <p className="flex gap-2 items-center"><RxUpdate /> Update Now</p>
+                    <p className="flex gap-2 items-center"><RxUpdate /> Update Now</p>
                   </Button>
-             
+
                 </div>
               </form>
             </Modal.Body>

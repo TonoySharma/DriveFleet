@@ -8,10 +8,12 @@ import React, { useState } from 'react';
 import { FcSearch } from 'react-icons/fc';
 import { GoArrowUpLeft } from 'react-icons/go';
 import FadeUp from '../FadeUp';
+import CarDrouDownFilter from '../dropdown/DropDown';
 
 
 const SharchBar = () => {
 const [search, setSearch] = useState();
+const [carModel, setCarModel] = useState("All");
 const router = useRouter();
 const searchParams = useSearchParams();
 
@@ -24,6 +26,15 @@ const handleSearchCar = () =>{
     }else{
         params.delete("searchCar")
     }
+
+    
+      if (carModel && carModel !== "All") {
+        params.set("carType", carModel);
+    } else {
+        params.delete("carType");
+    }
+
+
   router.push(`/explore-cars?${params.toString()}`)
 
 }
@@ -57,7 +68,12 @@ const handleSearchCar = () =>{
                               rounded shadow cursor-pointer lg:px-5 lg:py-6 hover:bg-green-300 transition-all duration-300">
                     <p className="flex gap-1 items-center"><FcSearch /> Search</p>
                 </Button>
+
+                <div>
+                   <CarDrouDownFilter carModel={carModel}  setCarModel={setCarModel}></CarDrouDownFilter>
+                </div>
             </div>
+
         </div>
         </FadeUp>
     );

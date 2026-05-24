@@ -7,6 +7,8 @@ import { FaAngleRight } from 'react-icons/fa';
 import FadeUp from '../FadeUp';
 import { Button } from '@heroui/react';
 
+
+
 const Explorcars = ({ car }) => {
     return (
       
@@ -23,6 +25,8 @@ const Explorcars = ({ car }) => {
                         fill
                         className="object-cover hover:scale-110 transition 
                         duration-500" />
+
+                        
                 </div>
 
                 <div className="p-5">
