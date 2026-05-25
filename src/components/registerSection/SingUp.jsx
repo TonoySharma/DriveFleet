@@ -54,9 +54,9 @@ export default function SignUpPage() {
     router.push("/");
    }, 2500);
 
-    if (data) {
-      redirect("/")
-    }
+    // if (data) {
+    //   redirect("/")
+    // }
 
 
   };

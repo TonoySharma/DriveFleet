@@ -11,8 +11,8 @@ import { Button } from '@heroui/react';
 
 const Explorcars = ({ car }) => {
     return (
-      
-             <FadeUp>
+
+        <FadeUp>
             <div
                 className="bg-white rounded-2xl overflow-hidden 
                 shadow-md hover:shadow-xl transition-shadow duration-300 border
@@ -23,10 +23,19 @@ const Explorcars = ({ car }) => {
                         src={car.image}
                         alt={car.carModel}
                         fill
-                        className="object-cover hover:scale-110 transition 
-                        duration-500" />
+                        className="object-cover hover:scale-110 transition duration-500"
+                    />
 
-                        
+                    <span
+                        className={`absolute top-4 left-4 px-4 py-1.5 rounded-full text-xs 
+    font-semibold tracking-wide uppercase shadow-sm text-white
+    ${car.availability
+                                ? "bg-green-500"
+                                : "bg-red-500"
+                            }`}
+                    >
+                        {car.availability ? "Available" : "Unavailable"}
+                    </span>
                 </div>
 
                 <div className="p-5">
@@ -65,8 +74,8 @@ const Explorcars = ({ car }) => {
                     </Link>
                 </div>
             </div>
-            </FadeUp>
-       
+        </FadeUp>
+
     );
 };
 
