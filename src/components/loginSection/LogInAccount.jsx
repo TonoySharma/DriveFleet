@@ -56,9 +56,9 @@ export default function LoginInPage() {
     router.push("/");
    }, 2500);
 
-    // if (data) {
-    //   redirect("/")
-    // }
+    if (data) {
+      redirect("/")
+    }
   };
 
   const handleGoogleSingIn = async () => {
